@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "272573033365",
+    "project_id": "sequence-decoder-3176d",
+    "storage_bucket": "sequence-decoder-3176d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272573033365:android:ca94036b3e97045c92e49c",
+        "android_client_info": {
+          "package_name": "rk.apenex.flightapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJT76EBqFrq2ehO7E4fRe0h3WUVMRdSDA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
