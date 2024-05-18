@@ -16,7 +16,7 @@ public class FlightApiClient {
 
     public FlightApiClient() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://kertob.americanplus.us/gtgn/")
+                .baseUrl("https://wifi.inflightinternet.com/abp/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -24,7 +24,7 @@ public class FlightApiClient {
     }
 
     public void getFlight1Data(final FlightApiCallback<Api1Response> callback) {
-        flightApi.getFlight1Data().enqueue(new Callback<Api1Response>() {
+        flightApi.getFlight1Data(true).enqueue(new Callback<Api1Response>() {
             @Override
             public void onResponse(Call<Api1Response> call, Response<Api1Response> response) {
                 if (response.isSuccessful()) {
@@ -48,7 +48,7 @@ public class FlightApiClient {
     public void getFlight2Data(final FlightApiCallback<Api2Response> callback) {
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://kertob.americanplus.us/gtgn/")
+                .baseUrl("https://www.aainflight.com/api/v1/connectivity/viasat/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
