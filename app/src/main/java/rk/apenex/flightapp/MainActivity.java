@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 checkNetworkState();
             }
             // Schedule the next execution after 3 seconds
-            handler.postDelayed(this, 1000);
+            handler.postDelayed(this, 2500);
         }
     };
 
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startRepeatedExecution() {
-        handler.postDelayed(runnable, 1000);
+        handler.postDelayed(runnable, 2500);
     }
 
     private void stopRepeatedExecution() {
