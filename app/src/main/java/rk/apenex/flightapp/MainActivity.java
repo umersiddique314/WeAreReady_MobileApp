@@ -31,7 +31,7 @@ import rk.apenex.flightapp.utils.TimeUtils;
 
 public class MainActivity extends AppCompatActivity {
     private FlightApiClient flightApiClient;
-    private boolean isUsingApi1 = false;
+    private boolean isUsingApi1 = true;
     private TextView apiName_tv;
     private ProgressBar apiProgress_pb;
     private Button apiSend_btn;
@@ -137,7 +137,6 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(String errorMessage) {
 
                 isUsingApi1 = false;
-                Toast.makeText(MainActivity.this, "Going for Api 2", Toast.LENGTH_SHORT).show();
 
                 stopRepeatedExecution();
                 checkNetworkState();
@@ -204,7 +203,6 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(String errorMessage) {
 
                 isUsingApi1 = true;
-                Toast.makeText(MainActivity.this, "Going for Api 1", Toast.LENGTH_SHORT).show();
 
                 stopRepeatedExecution();
                 checkNetworkState();
