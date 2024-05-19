@@ -1,7 +1,5 @@
 package rk.apenex.flightapp.api;
 
-import java.io.IOException;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,11 +26,7 @@ public class FlightApiClient {
             @Override
             public void onResponse(Call<Api1Response> call, Response<Api1Response> response) {
                 if (response.isSuccessful()) {
-                    try {
-                        callback.onResponse(response.body());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    callback.onResponse(response.body());
                 } else {
                     callback.onFailure("Failed to get data from Flight API 1");
                 }
@@ -46,23 +40,17 @@ public class FlightApiClient {
     }
 
     public void getFlight2Data(final FlightApiCallback<Api2Response> callback) {
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://www.aainflight.com/api/v1/connectivity/viasat/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        flightApi = retrofit.create(FlightApi.class);
-
+        FlightApi flightApi = retrofit.create(FlightApi.class);
         flightApi.getFlight2Data().enqueue(new Callback<Api2Response>() {
             @Override
             public void onResponse(Call<Api2Response> call, Response<Api2Response> response) {
                 if (response.isSuccessful()) {
-                    try {
-                        callback.onResponse(response.body());
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
+                    callback.onResponse(response.body());
                 } else {
                     callback.onFailure("Failed to get data from Flight API 2");
                 }
@@ -76,7 +64,7 @@ public class FlightApiClient {
     }
 
     public interface FlightApiCallback<T> {
-        void onResponse(T response) throws IOException;
+        void onResponse(T response);
 
         void onFailure(String errorMessage);
     }

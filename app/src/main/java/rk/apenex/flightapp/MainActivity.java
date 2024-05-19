@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void checkNetworkState() {
-        if (NetworkUtils.isInternetConnected(this)) {
+        if (NetworkUtils.isInternetConnected(MainActivity.this)) {
             if (isUsingApi1) {
                 fetchDataFromApi1();
             } else {
@@ -124,11 +125,7 @@ public class MainActivity extends AppCompatActivity {
                         convertToHoursMinutes(response.getResponseData().getSystemInfo().getTimeToLand())
                 );
 
-//                databaseReference.child("Api1").setValue(finalDataModel);
                 apiName_tv.setText("CALLING: API 1");
-//
-//                ApiModel apiModel = new ApiModel(isUsingApi1);
-//                databaseReference.child("whichApiIsWork").setValue(apiModel);
 
                 sendDatatoWearOsApp(finalDataModel);
 
@@ -140,9 +137,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(String errorMessage) {
 
                 isUsingApi1 = false;
-
-//                ApiModel apiModel = new ApiModel(isUsingApi1);
-//                databaseReference.child("whichApiIsWork").setValue(apiModel);
+                Toast.makeText(MainActivity.this, "Going for Api 2", Toast.LENGTH_SHORT).show();
 
                 stopRepeatedExecution();
                 checkNetworkState();
@@ -197,11 +192,7 @@ public class MainActivity extends AppCompatActivity {
                         convertToHoursMinutes(response.getTimeToGo())
                 );
 
-//                databaseReference.child("Api2").setValue(finalDataModel);
                 apiName_tv.setText("CALLING: API 2");
-//
-//                ApiModel apiModel = new ApiModel(isUsingApi1);
-//                databaseReference.child("whichApiIsWork").setValue(apiModel);
 
                 sendDatatoWearOsApp(finalDataModel);
 
@@ -213,9 +204,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(String errorMessage) {
 
                 isUsingApi1 = true;
-
-//                ApiModel apiModel = new ApiModel(isUsingApi1);
-//                databaseReference.child("whichApiIsWork").setValue(apiModel);
+                Toast.makeText(MainActivity.this, "Going for Api 1", Toast.LENGTH_SHORT).show();
 
                 stopRepeatedExecution();
                 checkNetworkState();
