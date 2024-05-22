@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 checkNetworkState();
             }
-            // Schedule the next execution after 3 seconds
-            handler.postDelayed(this, 2500);
+            // Schedule the next execution after 10 seconds
+            handler.postDelayed(this, 10000);
         }
     };
 
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startRepeatedExecution() {
-        handler.postDelayed(runnable, 2500);
+        handler.postDelayed(runnable, 10000);
     }
 
     private void stopRepeatedExecution() {
@@ -138,8 +138,10 @@ public class MainActivity extends AppCompatActivity {
 
                 isUsingApi1 = false;
 
+                apiName_tv.setText("CALLING: API 2");
+
                 stopRepeatedExecution();
-                checkNetworkState();
+                startRepeatedExecution();
             }
         });
     }
@@ -204,8 +206,10 @@ public class MainActivity extends AppCompatActivity {
 
                 isUsingApi1 = true;
 
+                apiName_tv.setText("CALLING: API 1");
+
                 stopRepeatedExecution();
-                checkNetworkState();
+                startRepeatedExecution();
             }
         });
     }
